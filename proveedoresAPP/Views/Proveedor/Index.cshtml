@@ -1,0 +1,59 @@
+﻿@model IEnumerable<proveedoresAPP.Models.proventityProveedorEntityDB>
+
+@{
+    ViewData["Title"] = "Index";
+    if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+}
+
+<h1>PROVEEDORES</h1>
+
+<p>
+    <a asp-action="Create">Guardar proveedor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RazonSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RFC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazonSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RFC)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdProveedor">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdProveedor">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
