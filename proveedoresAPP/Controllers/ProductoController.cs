@@ -50,7 +50,7 @@ namespace proveedoresAPP.Controllers
                 ViewBag.ErrorMessage = "Hay problemas al obtener registros sobre los productos. " +
                     "Intentelo mas tarde";
                 rcdoperEnum = RcdoperEnum.CONCURRENCY_ISSUE;
-                return View(listProdentities);
+                return View(listProdentities ?? new List<prodentityProductoEntityDB?>());
             }
             catch (DbUpdateException ex)
             {
@@ -59,7 +59,7 @@ namespace proveedoresAPP.Controllers
                 ViewBag.ErrorMessage = "Hay problemas al obtener registros sobre los productos. " +
                     "Intentelo mas tarde";
                 rcdoperEnum = RcdoperEnum.FAILURE;
-                return View(listProdentities);
+                return View(listProdentities ?? new List<prodentityProductoEntityDB?>());
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace proveedoresAPP.Controllers
                 ViewBag.ErrorMessage = "Hay problemas al obtener registros sobre los productos. " +
                     "Intentelo mas tarde";
                 rcdoperEnum = RcdoperEnum.UNKNOWN_ERROR;
-                return View(listProdentities);
+                return View(listProdentities ?? new List<prodentityProductoEntityDB?>());
             }
 
             return View(listProdentities ?? new List<prodentityProductoEntityDB?>());
